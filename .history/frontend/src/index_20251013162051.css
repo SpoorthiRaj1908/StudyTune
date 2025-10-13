@@ -1,0 +1,48 @@
+/* src/index.css */
+
+.side-gradient {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-color: #ffffff; /* middle background */
+  overflow: hidden;
+}
+
+.side-gradient::before,
+.side-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 50vw; /* covers left/right half */
+  height: 100%;
+  z-index: 0;
+  background: radial-gradient(circle at center, #ffdde1, #ffc6ff);
+  animation: gradientBG 15s ease infinite;
+}
+
+.side-gradient::after {
+  left: 50vw;
+  transform: rotate(180deg);
+}
+
+.side-gradient::before {
+  left: 0;
+}
+
+.gradient-content {
+  position: relative;
+  z-index: 10;
+  width: 60%; /* central content width */
+  padding: 2rem;
+  background-color: rgba(255, 255, 255, 0.8); /* slightly transparent white */
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}

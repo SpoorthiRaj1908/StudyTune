@@ -1,0 +1,46 @@
+/* Full width animated gradient navbar */
+.navbar-gradient {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: linear-gradient(270deg, #ffdde1, #ffc6ff, #ffdde1, #c6ffdd);
+  background-size: 800% 800%;
+  animation: gradientBG 15s ease infinite;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Navbar links/buttons */
+.navbar-gradient a,
+.navbar-gradient button {
+  color: inherit;
+  text-decoration: none;
+  margin-left: 1rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.navbar-gradient a:hover,
+.navbar-gradient button:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}
+
+/* Page content below navbar */
+.page-content {
+  padding: 2rem;
+}

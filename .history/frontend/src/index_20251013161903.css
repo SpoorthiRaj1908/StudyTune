@@ -1,0 +1,45 @@
+/* src/index.css */
+.side-gradient {
+  position: relative;
+  display: flex;
+  justify-content: center; /* center the content */
+  min-height: 100vh;
+  background-color: #f9f9f9; /* middle background */
+}
+
+.side-gradient::before,
+.side-gradient::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  width: 20%; /* width of left/right gradient */
+  height: 100%;
+  z-index: 0;
+  background: linear-gradient(-45deg, #ff6ec4, #7873f5, #42e695, #ffcc70);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+}
+
+.side-gradient::before {
+  left: 0;
+}
+
+.side-gradient::after {
+  right: 0;
+}
+
+.gradient-content {
+  position: relative;
+  z-index: 10; /* make content appear above gradients */
+  width: 60%; /* central content width */
+  padding: 2rem;
+  background-color: #ffffff;
+  box-shadow: 0 0 20px rgba(0,0,0,0.05);
+  border-radius: 12px;
+}
+
+@keyframes gradientBG {
+  0% {background-position: 0% 50%;}
+  50% {background-position: 100% 50%;}
+  100% {background-position: 0% 50%;}
+}

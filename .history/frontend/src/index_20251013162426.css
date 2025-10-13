@@ -1,0 +1,57 @@
+/* Full width animated gradient navbar */
+.navbar-gradient {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+
+  /* More vivid gradient colors */
+  background: linear-gradient(
+    270deg,
+    #ff5f6d,
+    #ffc371,
+    #42e695,
+    #3bb2b8,
+    #ff5f6d
+  );
+  background-size: 1000% 1000%; /* bigger background for smooth animation */
+  animation: gradientBG 10s ease infinite; /* faster animation for visible effect */
+
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Navbar links/buttons */
+.navbar-gradient a,
+.navbar-gradient button {
+  color: #fff;
+  text-decoration: none;
+  margin-left: 1rem;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.navbar-gradient a:hover,
+.navbar-gradient button:hover {
+  background: rgba(255,255,255,0.4);
+}
+
+/* Animation for gradient */
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Page content below navbar */
+.page-content {
+  padding: 2rem;
+}
