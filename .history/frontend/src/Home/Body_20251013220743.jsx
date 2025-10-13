@@ -3,21 +3,21 @@ function Body() {
     <div className="container mt-5">
       <div className="row align-items-center">
         {/* Left side — image */}
-        <div className="col-md-6 text-center" style={{marginTop:"-65px"}}>
+        <div className="col-md-6 text-center">
           <img src="/Où trouver les meilleurs livres audio _.jpeg"></img>
         </div>
 
         {/* Right side — text/content */}
-        <div className="col-md-6 " style={{ marginTop: "-125px" }}>
+        <div className="col-md-6" style={{ marginTop: "-300px" }}>
           <h1
-            className="text-dark fw-bold mb-6 mt-1"
+            className="text-dark fw-bold mb-4 mt-1"
             class="font-serif "
             style={{ fontSize: "30px" }}
           >
             STUDY TUNE
           </h1>
           <p
-            className="text-secondary mb-7"
+            className="text-secondary mb-3"
             style={{ fontSize: "20px" }}
             class="font-sans"
           >
@@ -34,7 +34,7 @@ function Body() {
             and tune, and listen as your content sings — making every study
             session creative, memorable, and a little more magical.
           </p>
-          <form className="d-flex gap-3 p-3 border rounded shadow">
+          <form className="d-flex gap-3 p-3 border rounded shadow-sm">
             {/* Song URL input */}
             <div className="flex-grow-1">
               <label htmlFor="song-link" className="form-label fw-bold">
@@ -44,7 +44,7 @@ function Body() {
                 type="url"
                 id="song-link"
                 name="song-link"
-                placeholder="Paste url"
+                placeholder="Paste your song URL here"
                 className="form-control"
                 required
               />

@@ -3,21 +3,21 @@ function Body() {
     <div className="container mt-5">
       <div className="row align-items-center">
         {/* Left side — image */}
-        <div className="col-md-6 text-center" style={{marginTop:"-65px"}}>
+        <div className="col-md-6 text-center">
           <img src="/Où trouver les meilleurs livres audio _.jpeg"></img>
         </div>
 
         {/* Right side — text/content */}
-        <div className="col-md-6 " style={{ marginTop: "-125px" }}>
+        <div className="col-md-6" style={{ marginTop: "-320px" }}>
           <h1
-            className="text-dark fw-bold mb-6 mt-1"
+            className="text-dark fw-bold mb-4 mt-1"
             class="font-serif "
             style={{ fontSize: "30px" }}
           >
             STUDY TUNE
           </h1>
           <p
-            className="text-secondary mb-7"
+            className="text-secondary"
             style={{ fontSize: "20px" }}
             class="font-sans"
           >
@@ -34,43 +34,30 @@ function Body() {
             and tune, and listen as your content sings — making every study
             session creative, memorable, and a little more magical.
           </p>
-          <form className="d-flex gap-3 p-3 border rounded shadow">
-            {/* Song URL input */}
-            <div className="flex-grow-1">
-              <label htmlFor="song-link" className="form-label fw-bold">
-                Song Link
-              </label>
-              <input
-                type="url"
-                id="song-link"
-                name="song-link"
-                placeholder="Paste url"
-                className="form-control"
-                required
-              />
-            </div>
+          <form>
+            <label htmlFor="song-link">Enter Song Link:</label>
+            <input
+              type="url"
+              id="song-link"
+              name="song-link"
+              placeholder="Paste your song URL here"
+              className="form-control mb-3"
+              required
+            />
 
-            {/* Notes upload input */}
-            <div className="flex-grow-1">
-              <label htmlFor="notes-upload" className="form-label fw-bold">
-                Upload Notes
-              </label>
-              <input
-                type="file"
-                id="notes-upload"
-                name="notes-upload"
-                accept=".pdf,.jpg,.jpeg,.png"
-                className="form-control"
-                required
-              />
-            </div>
+            <label htmlFor="notes-upload">Upload Notes (PDF/JPG):</label>
+            <input
+              type="file"
+              id="notes-upload"
+              name="notes-upload"
+              accept=".pdf,.jpg,.jpeg,.png"
+              className="form-control mb-3"
+              required
+            />
 
-            {/* Submit button */}
-            <div className="align-self-end">
-              <button type="submit" className="btn btn-primary mt-2">
-                Generate Study Song
-              </button>
-            </div>
+            <button type="submit" className="btn btn-primary">
+              Generate Study Song
+            </button>
           </form>
         </div>
       </div>

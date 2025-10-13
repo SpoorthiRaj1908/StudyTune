@@ -8,16 +8,16 @@ function Body() {
         </div>
 
         {/* Right side — text/content */}
-        <div className="col-md-6 " style={{ marginTop: "-125px" }}>
+        <div className="col-md-6" style={{ marginTop: "-150px" }}>
           <h1
-            className="text-dark fw-bold mb-6 mt-1"
+            className="text-dark fw-bold mb-4 mt-1"
             class="font-serif "
             style={{ fontSize: "30px" }}
           >
             STUDY TUNE
           </h1>
           <p
-            className="text-secondary mb-7"
+            className="text-secondary mb-6"
             style={{ fontSize: "20px" }}
             class="font-sans"
           >
