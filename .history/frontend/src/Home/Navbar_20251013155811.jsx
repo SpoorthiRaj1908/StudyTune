@@ -13,7 +13,7 @@ function Navbar() {
               src="/Descargar icono de vector de audiolibro en blanco gratis.jpeg"
               alt="Audiobook icon"
             />
-            <h4 className="text-dark m-0" class="font-serif ">
+            <h4 className="text-dark m-0">
               STUDY <br /> TUNE
             </h4>
           </div>

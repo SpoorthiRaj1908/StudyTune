@@ -2,7 +2,7 @@ function Navbar() {
   return (
     <>
       <nav
-        className="navbar bg-light border-bottom border-body sticky-top shadow"
+        className="navbar bg-light border-bottom border-body sticky-top"
         data-bs-theme="dark"
       >
         <div className="container-fluid d-flex align-items-center">
@@ -13,15 +13,15 @@ function Navbar() {
               src="/Descargar icono de vector de audiolibro en blanco gratis.jpeg"
               alt="Audiobook icon"
             />
-            <h4 className="text-dark m-0" class="font-serif ">
+            <h4 className="text-light m-0">
               STUDY <br /> TUNE
             </h4>
           </div>
 
-          <button type="button" className="btn btn-outline-dark ms-auto me-2">
+          <button type="button" className="btn btn-light ms-auto">
             Login
-          </button>
-         <button type="button" className="btn btn-outline-dark me-2">
+          </button>&nbsp;&nbsp;
+         <button type="button" className="btn btn-light me-2">
   SignUp
 </button>
 
