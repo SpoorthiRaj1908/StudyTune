@@ -24,7 +24,7 @@ export default function Output() {
             <source src="/path/to/generated-song.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
-          <a href="/path/to/generated-song.mp3" download className="btn btn-primary">
+          <a href="/path/to/generated-song.mp3" download className="btn btn-dark">
             &#8681; Download
           </a>
         </div>

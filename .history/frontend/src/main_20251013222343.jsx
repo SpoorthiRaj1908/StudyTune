@@ -11,9 +11,9 @@ import './index.css';
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <Navbar /> {/* Navbar visible on all pages */}
+      <Navbar /> {/* Sticky navbar will show on all pages */}
       <Routes>
-        <Route path="/" element={<Body />} />        {/* Home page */}
+        <Route path="/" element={<Body />} />      {/* Home page */}
         <Route path="/output" element={<Output />} /> {/* Output page */}
       </Routes>
     </BrowserRouter>

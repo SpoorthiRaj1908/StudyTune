@@ -2,14 +2,14 @@ import React from 'react';
 
 export default function Output() {
   return (
-    <div className="container-fluid mt-5">
-      <div className="row" style={{ minHeight: '80vh' }}>
+    <div className="container mt-5">
+      <div className="row">
         {/* Left side: lyrics / notes */}
         <div className="col-md-6 mb-4">
-          <div className="card p-3 shadow-sm h-100" style={{ height: '100%' }}>
+          <div className="card p-3 shadow-sm h-100">
             <h5 className="card-title">Your Study Song Lyrics</h5>
-            <div className="card-body" style={{ whiteSpace: 'pre-wrap', overflowY: 'auto', height: 'calc(100% - 2.5rem)' }}>
-              {/* Replace this with dynamic lyrics */}
+            <div className="card-body" style={{ whiteSpace: 'pre-wrap' }}>
+              {/* Replace this with dynamic lyrics from props or state */}
               Lorem ipsum dolor sit amet, consectetur adipiscing elit.  
               Vivamus lacinia odio vitae vestibulum vestibulum.  
               Cras venenatis euismod malesuada.
@@ -24,7 +24,7 @@ export default function Output() {
             <source src="/path/to/generated-song.mp3" type="audio/mpeg" />
             Your browser does not support the audio element.
           </audio>
-          <a href="/path/to/generated-song.mp3" download className="btn btn-primary">
+          <a href="/path/to/generated-song.mp3" download className="btn btn-success">
             &#8681; Download
           </a>
         </div>
