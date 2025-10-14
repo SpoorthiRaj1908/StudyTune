@@ -6,16 +6,20 @@ import Navbar from './Home/Navbar.jsx';
 import Body from './Home/Body.jsx';
 import Output from './Output.jsx';
 import Footer from './Home/Footer.jsx';
+import Login from './auth/login.jsx';
+import SignUp from './auth/signUp.jsx';
 import './index.css';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter>   
     <Footer/>
       <Navbar /> {/* Navbar visible on all pages */}
       <Routes>
         <Route path="/" element={<Body />} />        {/* Home page */}
         <Route path="/output" element={<Output />} /> {/* Output page */}
+         <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
