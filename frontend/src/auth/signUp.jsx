@@ -5,11 +5,34 @@ const SignUp = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [retypePassword, setRetypePassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      setError("Please enter a valid email address.");
+      return;
+    }
+
+    const passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*]).{8,}$/;
+    if (!passwordRegex.test(password)) {
+      setError("Password must be at least 8 characters and include one capital letter, one number, and one symbol.");
+      return;
+    }
+
+
+    if (password !== retypePassword) {
+      setError("Passwords do not match.");
+      return;
+    }
+
+    setError(""); 
     console.log("Name:", name, "Email:", email, "Password:", password);
+  
   };
 
   const inputStyle = { width: "100%", padding: 8, marginBottom: 12, borderRadius: 5, border: "1px solid #ccc" };
@@ -23,6 +46,10 @@ const SignUp = () => {
           <input type="text" placeholder="Name" value={name} onChange={(e) => setName(e.target.value)} required style={inputStyle} />
           <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required style={inputStyle} />
           <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required style={inputStyle} />
+          <input type="password" placeholder="Retype Password" value={retypePassword} onChange={(e) => setRetypePassword(e.target.value)} required style={inputStyle} />
+
+          {error && <p style={{ color: "red", marginBottom: 12 }}>{error}</p>}
+
           <button type="submit" style={btnStyle}>Sign Up</button>
         </form>
         <p style={{ textAlign: "center", marginTop: 12 }}>
