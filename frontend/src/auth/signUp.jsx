@@ -7,6 +7,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [retypePassword, setRetypePassword] = useState("");
   const [error, setError] = useState("");
+  const [message, setMessage] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
@@ -32,14 +33,22 @@ const SignUp = () => {
       return;
     }
 
+    // ✅ Save user details in localStorage
+    localStorage.setItem(
+      "user",
+      JSON.stringify({ name, email, password })
+    );
+
     setError("");
-    console.log({ name, email, password });
-    navigate("/input");
+    setMessage("Account created successfully!");
+
+    setTimeout(() => {
+      navigate("/login");
+    }, 1500);
   };
 
   return (
     <div style={styles.page}>
-      {/* Left side illustration */}
       <div style={styles.left}>
         <div style={styles.illustrationContainer}>
           <svg
@@ -62,10 +71,10 @@ const SignUp = () => {
         </div>
       </div>
 
-      {/* Right side form */}
       <div style={styles.right}>
         <form style={styles.form} onSubmit={handleSubmit}>
           <h2 style={{ marginBottom: 24, color: "#333" }}>Sign Up</h2>
+
           <input
             type="text"
             placeholder="Full Name"
@@ -107,6 +116,7 @@ const SignUp = () => {
           </span>
 
           {error && <p style={{ color: "red", marginBottom: 16 }}>{error}</p>}
+          {message && <p style={{ color: "green", marginBottom: 16 }}>{message}</p>}
 
           <button type="submit" style={styles.button}>
             Sign Up

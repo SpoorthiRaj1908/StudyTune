@@ -5,17 +5,29 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Email:", email, "Password:", password);
-    navigate("/input"); // redirect after login
+
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+
+    if (!savedUser) {
+      setError("Please sign up first!");
+      return;
+    }
+
+    if (savedUser.email === email && savedUser.password === password) {
+      setError("");
+      navigate("/input");
+    } else {
+      setError("Invalid credentials!");
+    }
   };
 
   return (
     <div style={styles.page}>
-      {/* Left side illustration */}
       <div style={styles.left}>
         <div style={styles.illustrationContainer}>
           <svg
@@ -38,10 +50,12 @@ const Login = () => {
         </div>
       </div>
 
-      {/* Right side form */}
       <div style={styles.right}>
         <form style={styles.form} onSubmit={handleSubmit}>
           <h2 style={{ marginBottom: 24, color: "#333" }}>Login</h2>
+
+          {error && <p style={{ color: "red", marginBottom: 16 }}>{error}</p>}
+
           <input
             type="email"
             placeholder="Email"

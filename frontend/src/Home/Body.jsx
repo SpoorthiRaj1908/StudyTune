@@ -28,7 +28,7 @@ function Body() {
   return (
     <div className="scroll-smooth">
      {/* Navbar */}
-{/* Navbar */}
+
 <nav
   className={`w-full fixed top-0 left-0 transition-colors duration-300 z-50 ${
     scrolled
@@ -36,51 +36,50 @@ function Body() {
       : "bg-gradient-to-r from-[#E3B7D3] to-[#DDB5AC]"
   }`}
 >
-  <div className="flex justify-between items-center py-3 px-4">
-    {/* Logo fully on left */}
-    <div className="flex items-center space-x-3 cursor-pointer">
+  <div className="flex justify-between items-center py-2 px-4">
+    {/* Logo smaller */}
+    <div className="flex items-center space-x-2 cursor-pointer">
       <img
         src="https://i.pinimg.com/736x/be/e4/b8/bee4b869ad5ec8cf824a293f2b7b0d93.jpg"
         alt="Logo"
-        className="w-16 h-16 object-cover rounded-full"
+        className="w-10 h-10 object-cover rounded-full"
       />
-      <span className="text-3xl font-serif text-black font-heading">
+      <span className="text-xl font-serif text-black font-heading">
         STUDY TUNE
       </span>
     </div>
 
-    {/* Navbar links */}
-    {/* Navbar links */}
-<div className="hidden md:flex space-x-6 mr-4">
-  {["home", "features", "process", "Login"].map((item) => {
-    if (item.toLowerCase() === "login") {
-      return (
-        <button
-          key={item}
-          onClick={() => navigate("/login")}
-          className="cursor-pointer capitalize font-bold text-black hover:text-gray-700 no-underline bg-transparent border-none"
-        >
-          {item}
-        </button>
-      );
-    } else {
-      return (
-        <Link
-          key={item}
-          to={item}
-          smooth={true}
-          duration={500}
-          className="cursor-pointer capitalize font-bold text-black hover:text-gray-700 no-underline"
-        >
-          {item.charAt(0).toUpperCase() + item.slice(1)}
-        </Link>
-      );
-    }
-  })}
-</div>
-
+    {/* Navbar links smaller */}
+    <div className="hidden md:flex space-x-4 mr-2">
+      {["home", "features", "process", "Login"].map((item) => {
+        if (item.toLowerCase() === "login") {
+          return (
+            <button
+              key={item}
+              onClick={() => navigate("/login")}
+              className="cursor-pointer capitalize font-semibold text-black hover:text-gray-700 text-sm bg-transparent border-none"
+            >
+              {item}
+            </button>
+          );
+        } else {
+          return (
+            <Link
+              key={item}
+              to={item}
+              smooth={true}
+              duration={500}
+              className="cursor-pointer capitalize font-semibold text-black hover:text-gray-700 text-sm"
+            >
+              {item.charAt(0).toUpperCase() + item.slice(1)}
+            </Link>
+          );
+        }
+      })}
+    </div>
   </div>
 </nav>
+
 
 
 
