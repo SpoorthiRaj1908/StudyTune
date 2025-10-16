@@ -4,31 +4,143 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log("Email:", email, "Password:", password);
+    navigate("/input"); // redirect after login
   };
 
-  const inputStyle = { width: "100%", padding: 8, marginBottom: 12, borderRadius: 5, border: "1px solid #ccc" };
-  const btnStyle = { width: "100%", padding: 8, borderRadius: 5, border: "none", backgroundColor: "#343a40", color: "white", fontWeight: "bold", cursor: "pointer" };
-
   return (
-    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "100vh", background: "#f8f9fa" }}>
-      <div style={{ background: "#fff", padding: 24, borderRadius: 10, boxShadow: "0 0 15px rgba(0,0,0,0.2)", width: 300 }}>
-        <h2 style={{ textAlign: "center", marginBottom: 20 }}>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required style={inputStyle} />
-          <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required style={inputStyle} />
-          <button type="submit" style={btnStyle}>Login</button>
+    <div style={styles.page}>
+      {/* Left side illustration */}
+      <div style={styles.left}>
+        <div style={styles.illustrationContainer}>
+          <svg
+            width="200"
+            height="200"
+            viewBox="0 0 512 512"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <circle cx="256" cy="256" r="256" fill="#F3F4F6" />
+            <path
+              d="M256 128C195.2 128 144 179.2 144 240C144 300.8 195.2 352 256 352C316.8 352 368 300.8 368 240C368 179.2 316.8 128 256 128Z"
+              fill="#E3B7D3"
+            />
+          </svg>
+          <h1 style={{ color: "white", marginTop: 20 }}>Welcome Back</h1>
+          <p style={{ color: "white", fontSize: 16 }}>
+            Log in to continue your learning journey!
+          </p>
+        </div>
+      </div>
+
+      {/* Right side form */}
+      <div style={styles.right}>
+        <form style={styles.form} onSubmit={handleSubmit}>
+          <h2 style={{ marginBottom: 24, color: "#333" }}>Login</h2>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+            style={styles.input}
+          />
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            style={styles.input}
+          />
+          <span
+            onClick={() => setShowPassword(!showPassword)}
+            style={styles.togglePassword}
+          >
+            {showPassword ? "Hide Password" : "Show Password"}
+          </span>
+
+          <button type="submit" style={styles.button}>
+            Login
+          </button>
+
+          <p style={{ marginTop: 16, fontSize: 14 }}>
+            Don't have an account?{" "}
+            <span
+              style={{ color: "#E3B7D3", cursor: "pointer" }}
+              onClick={() => navigate("/signup")}
+            >
+              Sign Up
+            </span>
+          </p>
         </form>
-        <p style={{ textAlign: "center", marginTop: 12 }}>
-          Don't have an account? <span style={{ color: "blue", cursor: "pointer" }} onClick={() => navigate("/signup")}>Sign Up</span>
-        </p>
       </div>
     </div>
   );
+};
+
+const styles = {
+  page: {
+    display: "flex",
+    height: "100vh",
+    width: "100vw",
+    fontFamily: "Poppins, sans-serif",
+  },
+  left: {
+    flex: 1,
+    background: "linear-gradient(135deg, #E3B7D3, #DDB5AC)",
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  illustrationContainer: {
+    textAlign: "center",
+  },
+  right: {
+    flex: 1,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    background: "rgba(255,255,255,0.85)",
+    backdropFilter: "blur(10px)",
+  },
+  form: {
+    width: "80%",
+    maxWidth: 360,
+    display: "flex",
+    flexDirection: "column",
+  },
+  input: {
+    padding: 12,
+    marginBottom: 16,
+    borderRadius: 8,
+    border: "1px solid #ccc",
+    fontSize: 14,
+    outline: "none",
+  },
+  button: {
+    padding: 14,
+    borderRadius: 8,
+    border: "none",
+    background: "linear-gradient(90deg, #E3B7D3, #DDB5AC)",
+    color: "white",
+    fontWeight: "bold",
+    cursor: "pointer",
+    fontSize: 16,
+    transition: "0.3s",
+  },
+  togglePassword: {
+    fontSize: 12,
+    color: "#DDB5AC",
+    cursor: "pointer",
+    marginBottom: 16,
+    display: "inline-block",
+  },
 };
 
 export default Login;

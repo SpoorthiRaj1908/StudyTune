@@ -1,95 +1,193 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-scroll";
 
 function Body() {
   const navigate = useNavigate();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleGenerate = (e) => {
-    e.preventDefault(); // prevent default form submission
-    // Optionally, get song URL and notes here
-    // const songLink = e.target["song-link"].value;
-    // const notesFile = e.target["notes-upload"].files[0];
-
-    navigate("/output"); // Redirect to Output page
+    e.preventDefault();
+    navigate("/Signup");
   };
 
+  const features = [
+    { title: "Upload Songs", desc: "Share your favorite songs!", icon: "🎶🎵" },
+    { title: "Upload Notes", desc: "Share your notes effortlessly", icon: "📤" },
+    { title: "Discover Resources", desc: "Access a library of study materials", icon: "📚" },
+  ];
+
+  const steps = ["Sign Up", "Upload Songs", "Upload Notes", "Explore"];
+
   return (
-    <div className="container mt-5">
-      <div className="row align-items-center">
-        {/* Left side — image */}
-        <div className="col-md-6 text-center" style={{ marginTop: "-65px" }}>
-          <img src="/Où trouver les meilleurs livres audio _.jpeg" alt="Study Tune" />
-        </div>
+    <div className="scroll-smooth">
+     {/* Navbar */}
+{/* Navbar */}
+<nav
+  className={`w-full fixed top-0 left-0 transition-colors duration-300 z-50 ${
+    scrolled
+      ? "bg-white shadow-md"
+      : "bg-gradient-to-r from-[#E3B7D3] to-[#DDB5AC]"
+  }`}
+>
+  <div className="flex justify-between items-center py-3 px-4">
+    {/* Logo fully on left */}
+    <div className="flex items-center space-x-3 cursor-pointer">
+      <img
+        src="https://i.pinimg.com/736x/be/e4/b8/bee4b869ad5ec8cf824a293f2b7b0d93.jpg"
+        alt="Logo"
+        className="w-16 h-16 object-cover rounded-full"
+      />
+      <span className="text-3xl font-serif text-black font-heading">
+        STUDY TUNE
+      </span>
+    </div>
 
-        {/* Right side — text/content */}
-        <div className="col-md-6" style={{ marginTop: "-125px" }}>
-          <h1
-            className="text-dark fw-bold mb-6 mt-1 font-serif"
-            style={{ fontSize: "30px" }}
-          >
-            STUDY TUNE
-          </h1>
-          <p
-            className="text-secondary mb-7 font-sans"
-            style={{ fontSize: "20px" }}
-          >
-            Welcome to <strong>Study Tune</strong> — your personalized study
-            companion. Explore curated study materials, audio lessons, and
-            interactive tools designed to make your learning experience better
-            and smarter. Turn your study notes into songs and make learning fun
-            like never before! With the Study-to-Song Converter, boring text
-            comes alive as melodies, complete with rhythm and pitch, so you can
-            memorize faster while enjoying the process. Perfect for students of
-            all ages, kids who love music, or anyone who struggles to stay
-            focused, this tool transforms ordinary study material into an
-            engaging audio experience. Simply paste your notes, tweak the tempo
-            and tune, and listen as your content sings — making every study
-            session creative, memorable, and a little more magical.
-          </p>
+    {/* Navbar links */}
+    {/* Navbar links */}
+<div className="hidden md:flex space-x-6 mr-4">
+  {["home", "features", "process", "Login"].map((item) => {
+    if (item.toLowerCase() === "login") {
+      return (
+        <button
+          key={item}
+          onClick={() => navigate("/login")}
+          className="cursor-pointer capitalize font-bold text-black hover:text-gray-700 no-underline bg-transparent border-none"
+        >
+          {item}
+        </button>
+      );
+    } else {
+      return (
+        <Link
+          key={item}
+          to={item}
+          smooth={true}
+          duration={500}
+          className="cursor-pointer capitalize font-bold text-black hover:text-gray-700 no-underline"
+        >
+          {item.charAt(0).toUpperCase() + item.slice(1)}
+        </Link>
+      );
+    }
+  })}
+</div>
 
-          <form
-            className="d-flex gap-3 p-3 border rounded shadow"
-            onSubmit={handleGenerate} // handle submit
-          >
-            {/* Song URL input */}
-            <div className="flex-grow-1">
-              <label htmlFor="song-link" className="form-label fw-bold">
-                Song Link
-              </label>
-              <input
-                type="url"
-                id="song-link"
-                name="song-link"
-                placeholder="Paste url"
-                className="form-control"
-                required
+  </div>
+</nav>
+
+
+
+      {/* Hero Section */}
+      <section
+        id="home"
+        className="h-screen flex items-center bg-gradient-to-r from-[#E3B7D3] to-[#DDB5AC] pt-16"
+      >
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center px-6 md:px-12 gap-10 w-full">
+          {/* Left Text */}
+          <div className="md:w-1/2">
+            <h1 className="text-5xl font-bold mb-4 font-serif text-black-800">
+              The perfect sound track for your success
+            </h1>
+            <p className="text-xl md:text-2xl font-semibold mb-4 text-black-700">
+              🎵 <strong>Turn Your Notes Into Music</strong> – Learn faster, remember longer, and enjoy every study session!
+            </p>
+            <p className="text-lg text-black-700">
+              Welcome to <strong>Study Tune</strong> — your personalized study companion. Explore curated study materials, audio lessons, and interactive tools designed to make your learning experience smarter.
+            </p>
+          </div>
+
+        {/* Right Illustration / Placeholder */}
+          <div className="md:w-1/2 flex justify-center">
+            <div className="w-100 h-100 bg-white/20 backdrop-blur-md rounded-xl flex items-center justify-center p-2">
+              <img
+                src="https://i.pinimg.com/1200x/20/0d/c8/200dc8985de0ed31a1885fc8e64235b7.jpg"
+                alt="Hero Illustration"
+                className="rounded-xl shadow-2xl hover:shadow-3xl transition-shadow duration-300"
               />
             </div>
-
-            {/* Notes upload input */}
-            <div className="flex-grow-1">
-              <label htmlFor="notes-upload" className="form-label fw-bold">
-                Upload Notes
-              </label>
-              <input
-                type="file"
-                id="notes-upload"
-                name="notes-upload"
-                accept=".pdf,.jpg,.jpeg,.png"
-                className="form-control"
-                required
-              />
-            </div>
-
-            {/* Submit button */}
-            <div className="align-self-end">
-              <button type="submit" className="btn btn-primary mt-2">
-                Generate Study Song
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
+      </section>
+
+    {/* Features Section */}
+<section
+  id="features"
+  className="py-20 bg-white"
+>
+  <div className="max-w-7xl mx-auto text-center mb-12">
+    <h2 className="text-3xl font-bold text-black-700">Features</h2>
+    <p className="text-black-700 mt-2">Everything you need to boost your learning.</p>
+  </div>
+  <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+    {features.map((feature) => (
+      <div
+        key={feature.title}
+        className="bg-gradient-to-r from-[#E3B7D3] to-[#DDB5AC] p-6 rounded-xl shadow-lg border-2 border-transparent hover:border-white hover:shadow-2xl transform hover:scale-105 transition-all duration-300 text-center"
+      >
+        <div className="text-5xl mb-4">{feature.icon}</div>
+        <h3 className="text-xl font-semibold mb-2 text-black">{feature.title}</h3>
+        <p className="text-black">{feature.desc}</p>
       </div>
+    ))}
+  </div>
+</section>
+
+
+
+{/* Process Section */}
+<section
+  id="process"
+  className="py-20 bg-white"
+>
+  <div className="max-w-7xl mx-auto text-center -12">
+    <h2 className="text-3xl font-bold text-black-700">How It Works</h2>
+    <p className="text-black-700 mt-2">Simple steps to start your journey</p>
+  </div>
+  <div className="max-w-5xl mx-auto grid md:grid-cols-4 gap-8 text-center">
+    {steps.map((step, idx) => (
+      <div
+        key={idx}
+        className="bg-gradient-to-r from-[#E3B7D3] to-[#DDB5AC] p-6 rounded-xl shadow-lg border-2 border-transparent hover:border-white hover:shadow-2xl transform hover:scale-105 transition-all duration-300"
+      >
+        <div className="text-4xl mb-4">{idx + 1}</div>
+        <h3 className="font-semibold text-black-700">{step}</h3>
+      </div>
+    ))}
+  </div>
+</section>
+
+
+      {/* Call to Action */}
+      <section
+        id="signup"
+        className="py-20 bg-gradient-to-r from-[#E3B7D3] to-[#DDB5AC] text-black text-center"
+      >
+        <h2 className="text-3xl font-bold mb-4">Start Sharing Your Knowledge Today</h2>
+        <button
+          onClick={handleGenerate}
+          className="px-8 py-3 bg-black text-white font-bold rounded-xl shadow-md 
+             hover:shadow-2xl hover:bg-gray-100 transition-all duration-300 
+             active:bg-black active:text-white mx-auto block"
+        >
+          Sign Up
+        </button>
+
+
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-black text-white py-1">
+        <div className="max-w-8xl mx-auto flex flex-col md:flex-row justify-between items-center px-4">
+          <p>&copy; 2025 Study Tune. All rights reserved.</p>
+        </div>
+      </footer>
     </div>
   );
 }
