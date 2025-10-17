@@ -14,12 +14,13 @@ function Body() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Show flash message if present in sessionStorage
+  // ⚡ Show flash message if present in sessionStorage
   useEffect(() => {
     const message = sessionStorage.getItem("flashMessage");
     if (message) {
       setFlash(message);
       sessionStorage.removeItem("flashMessage"); // remove after reading
+      setTimeout(() => setFlash(""), 3000); // hide after 3s
     }
   }, []);
 
@@ -27,8 +28,6 @@ function Body() {
     e.preventDefault();
     navigate("/Signup");
   };
-
-  const closeFlash = () => setFlash("");
 
   const features = [
     { title: "Upload Songs", desc: "Share your favorite songs!", icon: "🎶🎵" },
@@ -40,6 +39,15 @@ function Body() {
 
   return (
     <div className="scroll-smooth relative">
+
+      {/* ⚡ Flash Message */}
+      {flash && (
+        <div
+          className="fixed top-0 left-0 w-full bg-green-600 text-white text-center py-3 z-50 font-bold shadow-md"
+        >
+          {flash}
+        </div>
+      )}
 
       {/* Navbar */}
       <nav
@@ -90,23 +98,6 @@ function Body() {
           </div>
         </div>
       </nav>
-
-      {/* ⚡ Flash Message Below Navbar */}
-    {/* ⚡ Flash Message Below Navbar */}
-{flash && (
-  <div className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl z-50 px-4">
-    <div className="bg-white text-black px-4 py-3 rounded-lg shadow-md flex justify-between items-center border border-gray-300">
-      <span>{flash}</span>
-      <button
-        onClick={closeFlash}
-        className="font-bold text-xl leading-none hover:text-gray-600"
-      >
-        &times;
-      </button>
-    </div>
-  </div>
-)}
-
 
       {/* Hero Section */}
       <section

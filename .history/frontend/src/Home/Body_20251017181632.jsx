@@ -92,21 +92,19 @@ function Body() {
       </nav>
 
       {/* ⚡ Flash Message Below Navbar */}
-    {/* ⚡ Flash Message Below Navbar */}
-{flash && (
-  <div className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl z-50 px-4">
-    <div className="bg-white text-black px-4 py-3 rounded-lg shadow-md flex justify-between items-center border border-gray-300">
-      <span>{flash}</span>
-      <button
-        onClick={closeFlash}
-        className="font-bold text-xl leading-none hover:text-gray-600"
-      >
-        &times;
-      </button>
-    </div>
-  </div>
-)}
-
+      {flash && (
+        <div className="fixed top-16 left-1/2 transform -translate-x-1/2 w-full max-w-2xl z-50 px-4">
+          <div className="bg-green-600 text-white px-4 py-3 rounded-lg shadow-md flex justify-between items-center">
+            <span>{flash}</span>
+            <button
+              onClick={closeFlash}
+              className="font-bold text-xl leading-none hover:text-gray-200"
+            >
+              &times;
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* Hero Section */}
       <section
